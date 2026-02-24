@@ -1,8 +1,11 @@
 import csv
+import os
 
-# ===============================
-# Step 1: Create Student Records
-# ===============================
+file_name = "student_records.csv"
+
+# ==============================
+# 1️⃣ WRITE OPERATION (Create File)
+# ==============================
 
 students = [
     ["Student Name", "Student Number", "Class", "Grade"],  # Header
@@ -13,20 +16,47 @@ students = [
     ["Rahul Prasad", "S1005", "10B", "A+"]
 ]
 
-# Write to CSV file
-with open("student_records.csv", mode="w", newline="") as file:
+with open(file_name, mode="w", newline="") as file:
     writer = csv.writer(file)
     writer.writerows(students)
 
-print("Student records file created successfully.\n")
+print("✅ 5 Student records written successfully.\n")
 
-# ===============================
-# Step 2: Read Student Records
-# ===============================
 
-print("Reading Student Records:\n")
+# ==============================
+# 2️⃣ READ OPERATION
+# ==============================
 
-with open("student_records.csv", mode="r") as file:
+print("📖 Reading Student Records:\n")
+
+with open(file_name, mode="r") as file:
+    reader = csv.reader(file)
+    for row in reader:
+        print(row)
+
+print("\n")
+
+
+# ==============================
+# 3️⃣ APPEND OPERATION
+# ==============================
+
+new_student = ["Sneha Iyer", "S1006", "10A", "A"]
+
+with open(file_name, mode="a", newline="") as file:
+    writer = csv.writer(file)
+    writer.writerow(new_student)
+
+print("➕ New student record appended successfully.\n")
+
+
+# ==============================
+# 4️⃣ READ AGAIN (After Append)
+# ==============================
+
+print("📖 Updated Student Records:\n")
+
+with open(file_name, mode="r") as file:
     reader = csv.reader(file)
     for row in reader:
         print(row)
